@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <title></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:20');
+            
+        body
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins',sans-serif;
+            background: url({{ url_for ('static', filename = 'bg1.jpg') }});
+            background-attachment: fixed;
+        }
+        
+        header
+        {
+            max-width: 1338px;
+            position: relative;
+            margin: 20px auto;
+            padding: 5px;
+            background: linear-gradient(180deg, #52B8D8 0%, rgba(255, 255, 255, 0) 100%);
+            box-sizing: border-box;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .logo
+        {
+            color: #069370;
+            height: 60px;
+            width: 200px;
+            font-size: 36px;
+            line-height: 60px;
+            padding: 0 20px;
+            //background: #ccc;
+            text-align: center;
+            box-sizing: border-box;
+            float: left;
+            font-weight: 700;
+            text-decoration: none;
+            
+        }
+        
+        .nav1
+        {
+            float:left;
+        }
+        .nav2
+        {
+            float:right;
+        }
+        
+        .clearfix
+        {
+            clear: both;
+        }
+        .nav1,.nav2, ul
+        {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav1,.nav2, ul li
+        {
+            list-style: none;
+        }
+        .nav1 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav2 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav1 ul li a.active,
+        .nav1 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        .nav2 ul li a.active,
+        .nav2 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        @media(max-width 1200px)
+        {
+            header
+            {
+                margin: 20px;
+            }
+        }
+        
+        .row
+        {
+            margin: 20px;
+            align-content: center;
+        }
+        /* Create four equal columns that floats next to each other */
+        .column 
+        {
+            float:left;
+            width: 300px;
+            padding: 10px;
+            margin-left:20px;
+            margin-right:3px;
+            transition:1s;
+            height: 300px; /* Should be removed. Only for demonstration */
+        }
+        .column:hover 
+        {
+            transform:scale(1.1);
+            background: #ff800a;
+            box-shadow:2px 2px 2px #000;
+            z-index:2;
+        }
+
+        /* Clear floats after the columns */
+        .row:after 
+        {
+            content: " ";
+            display: table;
+            clear: both;
+        }
+        h2
+        {
+            color: white;
+        }
+        p
+        {
+            color:white;
+        }
+        .column a
+        {
+          text-decoration: none;
+        }
+
+    </style>
+    <body>
+        <header>
+            <a href="#" class="logo"><img src="{{url_for('static', filename='logoagro.png')}}" width=140 height="40"></a>
+            <div class="menu-toggle"></div>
+            <nav class="nav1">
+                <ul>
+                    <li><a href="/gohome" >Home</a></li>
+                    <li><a href="/services" class="active">Services</a></li>
+                    <li><a href="/predictinfo">Predict</a></li>
+                    <li><a href="/about">About</a></li>  
+                </ul>
+            </nav>
+            <nav class="nav2">
+                <ul>
+                    
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </nav>
+            <div class="clearfix"></div>
+        </header>
+        <div class="row">
+            <div class="column" style="background: url({{ url_for ('static', filename = 'coconut.jpg') }});">
+                <center>   
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="/coconut">
+                    <h2>Coconut Diseases & Symptoms</h2>
+                    <p>Click to know more</p>
+	                </a>
+                </center>
+            </div>
+            <div class="column" style="background: url({{ url_for ('static', filename = 'cocoa.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="/cocoa">
+                    <h2>Cocoa Diseases & Symptoms</h2>
+                    <p>Click to know more</p>
+	                </a>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'arecanut.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="/arecanut">
+                    <h2> Arecanut Diseases & Symptoms </h2>
+                    <p>Click to know more</p>
+	                </a>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'paddy1.jpg') }});">
+                <center>    
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="/paddy">
+                    <h2>Paddy Diseases & Symptoms </h2>
+                    <p>Click to know more</p>
+	                </a>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column" style="background:url({{ url_for ('static', filename = 'sugarcane1.jpg') }});">
+                <center>   
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="/sugarcane">
+                    <h2>Sugarcane Diseases & Symptoms</h2>
+                    <p>Click to know more</p>
+	                </a>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'wheat2.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="/wheat">
+                    <h2>Wheat Diseases & Symptoms</h2>
+                    <p>Click to know more</p>
+	                </a>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'peanut2.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="/pea">
+                    <h2> Pea Diseases & Symptoms </h2>
+                    <p>Click to know more</p>
+	                </a>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'mango1.jpg') }});">
+                <center>    
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="/mango">
+                    <h2>Mango Diseases & Symptoms </h2>
+                    <p>Click to know more</p>
+	                </a>
+                </center>
+            </div>
+        </div>
+    </body>
+</html>

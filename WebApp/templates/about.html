@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <title></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:20');
+            
+        body
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins',sans-serif;
+            background: url({{ url_for ('static', filename = 'bg8.jpg') }});
+            background-attachment: fixed;
+        }
+        
+        header
+        {
+            max-width: 1340px;
+            position: relative;
+            margin: 20px auto;
+            padding: 5px;
+            background: linear-gradient(180deg, #52B8D8 0%, rgba(255, 255, 255, 0) 100%);
+            box-sizing: border-box;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .logo
+        {
+            color: #069370;
+            height: 60px;
+            width: 200px;
+            font-size: 36px;
+            line-height: 60px;
+            padding: 0 20px;
+            //background: #ccc;
+            text-align: center;
+            box-sizing: border-box;
+            float: left;
+            font-weight: 700;
+            text-decoration: none;
+            
+        }
+        
+        .nav1
+        {
+            float:left;
+        }
+        .nav2
+        {
+            float:right;
+        }
+        
+        .clearfix
+        {
+            clear: both;
+        }
+        .nav1,.nav2, ul
+        {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav1,.nav2, ul li
+        {
+            list-style: none;
+        }
+        .nav1 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav2 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav1 ul li a.active,
+        .nav1 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        .nav2 ul li a.active,
+        .nav2 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        @media(max-width 1200px)
+        {
+            header
+            {
+                margin: 20px;
+            }
+        }
+        /*Section Part*/
+        .team 
+        {
+            margin: 110px 0;
+        }
+    
+        h1
+        {
+            text-align: center;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: white;
+            padding-bottom: 10px;
+        }
+    
+        h1:after
+        {
+            content: '';
+            background: white
+                ;
+            display: block;
+            height: 3px;
+            width: 150px;
+            margin: 10px auto;
+        }
+        .block
+        {
+            float: left;
+            margin: -45px;
+            margin-top: 20px;
+            height: 400px;
+            width: 1300px;
+        }
+    
+        .profile
+        {
+            margin-top: 10px;
+            margin: auto;
+            margin-right:10px;
+            width: 300px;
+            height: 430px;
+            border: 10px solid linear-gradient(180deg, #52B8D8 100%, rgba(255, 255, 255, 0) 0%);;
+            border-radius: 50px;
+            background: linear-gradient(180deg, #52B8D8 0%, rgba(255, 255, 255, 0) 100%);;
+            shape-margin: 500px;
+        }
+    
+        .profile .img-box
+        {
+            opacity: 1;
+            display: block;
+            position: relative;
+            margin-top: 25px;
+            border: 2px solid linear-gradient(180deg, #52B8D8 0%, rgba(255, 255, 255, 0) 100%);;
+            border-radius: 10px;
+        }
+    
+        .profile h2
+        {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: black;
+        }
+    
+        .profile h3
+        {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: black;
+        }
+    
+        .profile p
+        {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: black;
+        }
+    
+        .img-box:after
+        {
+            content: '';
+            opacity: 0;
+            border: 2px solid linear-gradient(180deg, #52B8D8 0%, rgba(255, 255, 255, 0) 100%);;
+            border-radius: 10px;
+            background-color: rgba(0,0,0,0.6);
+            position: absolute;
+            right: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+    
+        .img-box ul
+        {
+            margin: 0;
+            padding: 20px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            display: block;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+        }
+    
+        .img-box ul li
+        {
+            width: 30px;
+            height: 30px;
+            border:1px solid #fff;
+            border-radius: 50%;
+            margin: 3px;
+            padding: 7px;
+            display: inline-block;
+        }
+
+        .img-box a
+        {
+            color: #fff;
+        }
+        .img-box:hover:after
+        {
+            opacity: 1;
+        }
+        .img-box:hover ul
+        {
+            opacity: 1;
+        }
+    
+        .imag-box a:hover li
+        {
+            color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 10px;
+        }
+    
+        .img-box:after, .img-box ul, .img-box ul li
+        {
+            transition: all 0.5s ease-in-out 0s;
+        }
+        .abtcnt
+        {
+            margin: 50px;
+        }
+        .abtimg
+        {
+            margin-left: 5px;
+            margin-top: 100px;
+            
+        }
+        .abtimg img:hover
+        {
+            transform:scale(1.2);
+            box-shadow:2px 2px 2px;
+            z-index:2;
+        }
+        .para
+        {
+            
+            display: block;
+            height: 400px;
+            width: 700px;
+            margin-top: -450px;
+            margin-bottom: 1em;
+            margin-left: 500px;
+            color: lightyellow;
+            font-size: 20px;
+            font-weight: bold;
+            
+        }
+    </style>
+    <body>
+        <header>
+            <a href="#" class="logo"><img src="{{url_for('static', filename='logoagro.png')}}" width=140 height="40"></a>
+            <div class="menu-toggle"></div>
+            <nav class="nav1">
+                <ul>
+                    <li><a href="/gohome" >Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/predictinfo">Predict</a></li>
+                    <li><a href="/about" class="active">About</a></li>  
+                </ul>
+            </nav>
+            <nav class="nav2">
+                <ul>
+                    
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </nav>
+            <div class="clearfix"></div>
+        </header>
+        <div class="abtcnt">
+            
+            <div class="abtimg"><img src="{{url_for('static', filename='bg3.jpg')}}" height="400px" width="400px" style="border-radius: 40px; "></div>
+            <div class="para">
+                <h1>About Us</h1>
+            <p style="text-align: justify;">
+                    Agriculture is a mainstay for the people living. In India,Agriculture is backbone of our country. Above 55% of people is dependent on the field of agriculture recent research news. In this agriculture field, it gives above 60% employed people as farmers from total population. In worldwide scenario, the farm output of India was scored second rank. So that compared tothe other domains, in the field of agriculture produce more data day to day. 
+                <br>With the knowledge of proper diagnosis and analysis using various techniques for this
+                    domain will increase the productivity and profitability from the intelligence techniques. It is much more help to the farmers and as well as the government. This sytem helps the farmer to predict the suitable  crops to be grown in suitable area.
+            </p></div>
+        </div>
+        <!--Section Part-->
+        <section class="team">
+            <div class="container">
+                <h1>OUR TEAM</h1>
+                <div class="block">
+                    <div class="col-md-3 profile text-center">
+                        <div class="img-box">
+                            <img src="{{url_for('static', filename='tm1.jpeg')}}" class="img-rounded" alt="Cinque Terre" width="246" height="200">
+                        </div>
+                            <h2>Sumit</h2>
+                            <h3>4NM17CS189</h3>
+                            <p>Bachelor of Engineering in Computer Science and Engineering</p>
+                    </div>
+                    <div class="col-md-3 profile text-center">
+                        <div class="img-box">
+                            <img src="{{url_for('static', filename='tm2.jpeg')}}" class="img-rounded" alt="Cinque Terre" width="246" height="200">
+                        </div>
+                            <h2>Vikil</h2>
+                            <h3>4NM18CS433</h3>
+                            <p>Bachelor of Engineering in Computer Science and Engineering</p>
+                    </div>
+                    <div class="col-md-3 profile text-center">
+                        <div class="img-box">
+                            <img src="{{url_for('static', filename='tm3.jpeg')}}" class="img-rounded" alt="Cinque Terre" width="246" height="200">
+                        </div>
+                            <h2>Theertha D L</h2>
+                            <h3>4NM18CS427</h3>
+                            <p>Bachelor of Engineering in Computer Science and Engineering</p>
+                    </div>
+                    <div class="col-md-3 profile text-center">
+                        <div class="img-box">
+                            <img src="{{url_for('static', filename='tm4.jpg')}}" class="img-rounded" alt="Cinque Terre" width="246" height="200">
+                        </div>
+                            <h2>Oliver Castelino</h2>
+                            <h3>4NM18CS413</h3>
+                            <p>Bachelor of Engineering in Computer Science and Engineering</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </body>
+</html>

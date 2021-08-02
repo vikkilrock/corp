@@ -1,0 +1,445 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <title></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:20');
+            
+        body
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins',sans-serif;
+            background: url({{ url_for ('static', filename = 'bg1.jpg') }});
+            background-attachment: fixed;
+        }
+        
+        header
+        {
+            max-width: 1340px;
+            position: relative;
+            margin: 20px auto;
+            padding: 5px;
+            background: linear-gradient(180deg, #52B8D8 0%, rgba(255, 255, 255, 0) 100%);
+            box-sizing: border-box;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .logo
+        {
+            color: #069370;
+            height: 60px;
+            width: 200px;
+            font-size: 36px;
+            line-height: 60px;
+            padding: 0 20px;
+            //background: #ccc;
+            text-align: center;
+            box-sizing: border-box;
+            float: left;
+            font-weight: 700;
+            text-decoration: none;
+            
+        }
+        
+        .nav1
+        {
+            float:left;
+        }
+        .nav2
+        {
+            float:right;
+        }
+        
+        .clearfix
+        {
+            clear: both;
+        }
+        .nav1,.nav2, ul
+        {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav1,.nav2, ul li
+        {
+            list-style: none;
+        }
+        .nav1 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav2 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav1 ul li a.active,
+        .nav1 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        .nav2 ul li a.active,
+        .nav2 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        @media(max-width 1200px)
+        {
+            header
+            {
+                margin: 20px;
+            }
+        }
+        .nutrient
+        {
+            margin: 40px;
+            
+            height: 600px;
+            width: 600px;
+        }
+        .nutrient h3
+        {
+            color: blue;
+            font-weight: 700;
+            font-size: 29px;
+        }
+        table
+        {
+            margin-left: 150px;
+            margin-top: 20px;
+            background-color: antiquewhite;
+            width: 600px;
+            height: 500px;
+            text-align: center;
+        }
+        table tr th
+        {
+            text-align: center;
+            font-size: 20px;
+        }
+        .ph
+        {
+            margin: 40px;
+        }
+        .ph h3
+        {
+            color: blue;
+            font-weight: 700;
+            font-size: 29px;
+        }
+        .ph div img
+        {
+            margin-left: 150px;
+            
+        }
+        .crop
+        {
+            margin: 20px;
+            align-content: center;
+        }
+        .crop h3
+        {
+            color: blue;
+            font-weight: 700;
+            font-size: 29px; 
+        }
+        /* Create four equal columns that floats next to each other */
+        .column 
+        {
+            float:left;
+            width: 300px;
+            padding: 10px;
+            margin-left:20px;
+            margin-right:3px;
+            transition:1s;
+            height: 300px; /* Should be removed. Only for demonstration */
+        }
+        .column:hover 
+        {
+            transform:scale(1.1);
+            background: #ff800a;
+            box-shadow:2px 2px 2px #000;
+            z-index:2;
+        }
+
+        /* Clear floats after the columns */
+        .crop:after 
+        {
+            content: " ";
+            display: table;
+            clear: both;
+        }
+        h2
+        {
+            color: white;
+        }
+        p
+        {
+            color:white;
+        }
+
+        
+    </style>
+    <body>
+        <header>
+            <a href="#" class="logo"><img src="{{url_for('static', filename='logoagro.png')}}" width=140 height="40"></a>
+            <div class="menu-toggle"></div>
+            <nav class="nav1">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/predictinfo">Predict</a></li>
+                    <li><a href="/about">About</a></li>  
+                </ul>
+            </nav>
+            <nav class="nav2">
+                <ul>
+                    
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </nav>
+            <div class="clearfix"></div>
+        </header>
+        <div class="nutrient">
+            <h3>Nutrients In Soil:</h3>
+            <table>
+                <tr>
+                    <th>Nutrient</th>
+                    <th>Symbol</th>
+                    <th>%</th>
+                    <th>mg kg−1 (ppm)</th>
+                </tr>
+                <tr>
+                    <td>Nitrogen</td>
+                    <td>N</td>
+                    <td>1.5</td>
+                    <td>15000</td>
+                </tr>
+                <tr>
+                    <td>Potassium</td>
+                    <td>K</td>
+                    <td>1.0</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>Calcium</td>
+                    <td>Ca</td>
+                    <td>0.5</td>
+                    <td>5000</td>
+                </tr>
+                <tr>
+                    <td>Magnesium</td>
+                    <td>Mg</td>
+                    <td>0.2</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>Phosphorus</td>
+                    <td>P</td>
+                    <td>0.2</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>Sulfur</td>
+                    <td>S</td>
+                    <td>0.1</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <td>Chloride</td>
+                    <td>Cl</td>
+                    <td>0.01</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>Iron</td>
+                    <td>Fe</td>
+                    <td>0.01</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>Manganese</td>
+                    <td>Mn</td>
+                    <td>0.005</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Zinc</td>
+                    <td>Zn</td>
+                    <td>0.002</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Boron</td>
+                    <td>B</td>
+                    <td>0.002</td>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <td>Copper</td>
+                    <td>Cu</td>
+                    <td>0.0006</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>Molybdenum</td>
+                    <td>Mo</td>
+                    <td>0.00001</td>
+                    <td>0.1</td>
+                </tr>
+            </table>
+        </div>
+        <div class="ph">
+            <h3>PH Scale:</h3>
+            <br>
+            <div><img src="{{url_for('static', filename='phscale.png')}}" height="600px" width="800px"></div>
+        </div>
+        <div class="crop">
+            <center><h3>Crop Gallery</h3></center>
+            <br>
+            <div class="column" style="background: url({{ url_for ('static', filename = 'coconut.jpg') }});">
+                <center>   
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Coconut</h2>
+                </center>
+            </div>
+            <div class="column" style="background: url({{ url_for ('static', filename = 'cocoa.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Cocoa</h2>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'arecanut.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Areca nut</h2>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'paddy1.jpg') }});">
+                <center>    
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Paddy</h2>
+                </center>
+            </div>
+        </div>
+        <div class="crop">
+            <div class="column" style="background:url({{ url_for ('static', filename = 'sugarcane1.jpg') }});">
+                <center>   
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Sugarcane</h2>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'wheat2.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Wheat</h2>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'peanut2.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Peanut</h2>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'mango1.jpg') }});">
+                <center>    
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Mango</h2>
+                </center>
+            </div>
+        </div>
+        <div class="crop">
+            <div class="column" style="background:url({{ url_for ('static', filename = 'mong.jpg') }});">
+                <center>   
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Mung Beans</h2>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'tea.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Tea</h2>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'cofee.jpg') }});">
+                <center>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Coffee</h2>
+                </center>
+            </div>
+            <div class="column" style="background:url({{ url_for ('static', filename = 'maize.jpg') }});">
+                <center>    
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h2>Maize</h2>
+                </center>
+            </div>
+        </div>
+    </body>
+</html>

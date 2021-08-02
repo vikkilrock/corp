@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <title></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:20');
+            
+        body
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins',sans-serif;
+            background: url({{ url_for ('static', filename = 'bg9.jpg') }});
+            background-attachment: fixed;
+        }
+        
+        header
+        {
+            max-width: 1350px;
+            position: relative;
+            margin: 20px auto;
+            padding: 5px;
+            background: linear-gradient(180deg, #52B8D8 0%, rgba(255, 255, 255, 0) 100%);
+            box-sizing: border-box;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .logo
+        {
+            color: #069370;
+            height: 60px;
+            width: 200px;
+            font-size: 36px;
+            line-height: 60px;
+            padding: 0 20px;
+            //background: #ccc;
+            text-align: center;
+            box-sizing: border-box;
+            float: left;
+            font-weight: 700;
+            text-decoration: none;
+            
+        }
+        
+        .nav1
+        {
+            float:left;
+        }
+        .nav2
+        {
+            float:right;
+        }
+        
+        .clearfix
+        {
+            clear: both;
+        }
+        .nav1,.nav2, ul
+        {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav1,.nav2, ul li
+        {
+            list-style: none;
+        }
+        .nav1 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav2 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav1 ul li a.active,
+        .nav1 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        .nav2 ul li a.active,
+        .nav2 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        @media(max-width 1200px)
+        {
+            header
+            {
+                margin: 20px;
+            }
+        }
+        .prdct
+        {
+           height: 500px;
+            width: 800px;
+            margin-left: 280px;
+        }
+        input[type=text], select 
+        {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] 
+        {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=submit]:hover 
+        {
+            background-color: #45a049;
+        }
+        .result
+        {
+            margin: -10px;
+            
+        }
+        .result h1
+        {
+            color: blue;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        .sug1
+        {
+            margin: 40px;
+            margin-left: 200px;
+        }
+        .sug2
+        {
+            margin: -382px;
+            margin-left: 700px; 
+        }
+        .sug1 p
+        {
+            font-size: 25px;
+            font-weight: 500;
+            color: #333;
+        }
+        .sug1 p b
+        {
+            font-size: 30px;
+            margin-left: 20px;
+            color: darkred;
+        }
+        .sug2 p
+        {
+            font-size: 25px;
+            font-weight: 500;
+            color: #333;
+        }
+        .sug2 p b
+        {
+            font-size: 30px;
+            margin-left: 20px;
+            color: darkred;
+        }
+        .sug1 img
+        {
+            margin-left: 50px;
+            
+        }
+        .sug1 img:hover
+        {
+            transform: scale(1.2);
+            z-index: 2;
+        }
+        .sug2 img
+        {
+            margin-left: 50px;
+            
+        }
+        .sug2 img:hover
+        {
+            transform: scale(1.2);
+            z-index: 2;
+        }
+    </style>
+    <body>
+        <header>
+            <a href="#" class="logo"><img src="{{url_for('static', filename='logoagro.png')}}" width=140 height="40"></a>
+            <div class="menu-toggle"></div>
+            <nav class="nav1">
+                <ul>
+                    <li><a href="/gohome" >Home</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="#" class="active">Predict</a></li>
+                    <li><a href="/about">About</a></li>  
+                </ul>
+            </nav>
+            <nav class="nav2">
+                <ul>
+                    
+                    <li><a href="/logout">logout</a></li>
+                </ul>
+            </nav>
+            <div class="clearfix"></div>
+        </header>
+        
+        <div class="result">
+	       <center><h1>Results</h1></center>
+            <div class="sug1">
+                <p> 1st Preferred Crop is  <b> {{prediction}} </b></p>
+                <br>
+                <br>
+                <img src="{{ image1 }}" height="250px" width="250px">
+            </div>
+            <div class="sug2">
+                <p>2nd Preferred Crop is <b>{{prediction1}} </b></p>
+                <br>
+                <br>
+                <img src="{{ image2 }}" height="250px" width="250px">
+            </div>
+	   </div>
+    </body>
+</html>

@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <title></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:20');
+            
+        body
+        {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins',sans-serif;
+            background: url({{ url_for ('static', filename = 'bg5.jpg') }});
+            background-attachment: fixed;
+        }
+        
+        header
+        {
+            max-width: 1340px;
+            position: relative;
+            margin: 20px auto;
+            padding: 5px;
+            background: linear-gradient(180deg, #52B8D8 0%, rgba(255, 255, 255, 0) 100%);
+            box-sizing: border-box;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .logo
+        {
+            color: #069370;
+            height: 60px;
+            width: 200px;
+            font-size: 36px;
+            line-height: 60px;
+            padding: 0 20px;
+            //background: #ccc;
+            text-align: center;
+            box-sizing: border-box;
+            float: left;
+            font-weight: 700;
+            text-decoration: none;
+            
+        }
+        
+        .nav1
+        {
+            float:left;
+        }
+        .nav2
+        {
+            float:right;
+        }
+        
+        .clearfix
+        {
+            clear: both;
+        }
+        .nav1,.nav2, ul
+        {
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .nav1,.nav2, ul li
+        {
+            list-style: none;
+        }
+        .nav1 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav2 ul li a
+        {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        .nav1 ul li a.active,
+        .nav1 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        .nav2 ul li a.active,
+        .nav2 ul li a:hover
+        {
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        @media(max-width 1200px)
+        {
+            header
+            {
+                margin: 20px;
+            }
+        }
+        #login
+        {
+            margin: 40px;
+        }
+#login .container #login-row #login-column #login-box {
+  margin-left: 290px;
+  max-width: 600px;
+  height: 320px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+#login .container #login-row #login-column #login-box #login-form {
+  padding: 20px;
+}
+#login .container #login-row #login-column #login-box #login-form #register-link {
+  margin-top: -85px;
+}
+        input[type="Submit"]
+        {
+            margin-left: 200px;
+        }
+        
+    </style>
+    <body>
+        <header>
+            <a href="#" class="logo"><img src="{{url_for('static', filename='logoagro.png')}}" width=140 height="40"></a>
+            <div class="menu-toggle"></div>
+            <nav class="nav1">
+                <ul>
+                    <li><a href="/" >Home</a></li>
+                    
+                </ul>
+            </nav>
+            <nav class="nav2">
+                <ul>
+                    
+                    <li><a href="#" class="active">Sign In</a></li>
+                    <li><a href="/enternew">Sign Up</a></li>
+                </ul>
+            </nav>
+            <div class="clearfix"></div>
+        </header>
+        <script>alert({msg});</script>
+        <div id="login">
+        <br><br>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="/logindetails" method="post">
+                            <h3 class="text-center text-info">Login</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label><br>
+                                <input type="password" name="password" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a href="/enternew" class="text-info">Register here</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
